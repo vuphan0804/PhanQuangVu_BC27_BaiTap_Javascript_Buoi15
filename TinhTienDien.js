@@ -7,7 +7,10 @@ function totalMoneyUseElectric() {
     document.getElementById("showResult").style = "display:block; color:green";
     document.getElementById(
       "totalMoney"
-    ).innerHTML = `Họ tên ${nameCustomer}. Tiền điện ${totalMoneyFinal} vnd`;
+    ).innerHTML = `Họ tên ${nameCustomer}. Tiền điện ${new Intl.NumberFormat(
+      "vi-VN",
+      { style: "currency", currency: "VND" }
+    ).format(totalMoneyFinal)} `;
   }
   function errorText() {
     document.getElementById("showResult").style = "block; color:red";
@@ -16,7 +19,7 @@ function totalMoneyUseElectric() {
     ).innerHTML = `Nhập không hợp lệ. Vui lòng nhập lại!`;
   }
 
-  if (kwUse <= 0) {
+  if (kwUse <= 0 || nameCustomer == "") {
     errorText();
   } else if (kwUse > 0 && kwUse <= 50) {
     totalMoneyFinal = kwUse * 500;
@@ -35,10 +38,4 @@ function totalMoneyUseElectric() {
       50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (kwUse - 350) * 1300;
     calcMoney();
   }
-
-  //   document.getElementById("showResult").style = "block";
-  //   document.getElementById(
-  //     "totalMoney"
-  //   ).innerHTML = `Họ tên ${nameCustomer}. Tiền điện ${totalMoneyFinal} vnd`;
-  //
 }
