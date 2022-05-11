@@ -33,10 +33,8 @@ function handlePassUni() {
     failWithZeroMark();
   } else if (sumMark >= trueMark) {
     passExamUni(sumMark);
-    console.log("dau r");
   } else {
     failExamUni(sumMark);
-    console.log("rot roi");
   }
 }
 
